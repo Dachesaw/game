@@ -1,6 +1,7 @@
 import sys
 import pygame
 from settings import Settings
+from ship import Ship
 
 class AnimeAliens:
     """Класс для управления ресурасами и поведением игры"""
@@ -14,6 +15,7 @@ class AnimeAliens:
             (self.settings.screen_width, self.settings.screen_height))
         self.bg_color = (self.settings.bg_color)
         pygame.display.set_caption('ANIME ALIENS')
+        ывавп
 
 
     def run_game(self):
@@ -23,10 +25,13 @@ class AnimeAliens:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
-                    
+            
+            
             self.screen.fill(self.bg_color)
             #отображение последнего отрисованного экрана
             pygame.display.flip()    
+
+
 if __name__ == '__main__':
     #создание экземпляра и запуск игры
     ai = AnimeAliens()
