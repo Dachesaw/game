@@ -3,18 +3,20 @@ import pygame
 from settings import Settings
 from ship import Ship
 
-class AnimeAliens:
+class AliensInvasion:
     """Класс для управления ресурасами и поведением игры"""
 
     def __init__(self):
         """Инициализирует игру и создает игровые ресурсы"""
         pygame.init()
         self.settings = Settings()
-
-        self.screen = pygame.display.set_mode((self.settings.screen_w, self.settings.screen_h))
+        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        self.settings.screen_widht = self.screen.get_rect().width
+        self.settings.screen_height = self.screen.get_rect().height
         self.bg_color = (self.settings.bg_color)
         pygame.display.set_caption('ANIME ALIENS')
-        self.ship = Ship(screen)
+        
+        self.ship = Ship(self)
 
     def run_game(self):
         """Запуск основного цикла игры"""
@@ -24,13 +26,13 @@ class AnimeAliens:
                 if event.type == pygame.QUIT:
                     sys.exit()
             
-            self.ship.blitme()
             self.screen.fill(self.bg_color)
-            #отображение последнего отрисованного экрана
+            self.ship.blitme()
+            # Отображение последнего отрисованного экрана
             pygame.display.flip()    
 
 
 if __name__ == '__main__':
     #создание экземпляра и запуск игры
-    ai = AnimeAliens()
+    ai = AliensInvasion()
     ai.run_game()
