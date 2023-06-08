@@ -11,12 +11,10 @@ class AnimeAliens:
         pygame.init()
         self.settings = Settings()
 
-        self.screen = pygame.display.set_mode(
-            (self.settings.screen_width, self.settings.screen_height))
+        self.screen = pygame.display.set_mode((self.settings.screen_w, self.settings.screen_h))
         self.bg_color = (self.settings.bg_color)
         pygame.display.set_caption('ANIME ALIENS')
-        ывавп
-
+        self.ship = Ship(screen)
 
     def run_game(self):
         """Запуск основного цикла игры"""
@@ -26,7 +24,7 @@ class AnimeAliens:
                 if event.type == pygame.QUIT:
                     sys.exit()
             
-            
+            self.ship.blitme()
             self.screen.fill(self.bg_color)
             #отображение последнего отрисованного экрана
             pygame.display.flip()    
