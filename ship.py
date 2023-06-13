@@ -13,7 +13,15 @@ class Ship():
         self.rect = self.image.get_rect()
         # Корабль появляеться у нижнего края
         self.rect.midbottom = self.screen_rect.midbottom
-    
+        # Флаги движения
+        self.moving_right = False
+
+
+    def update(self):
+        """обновляет позицию корабля с учетом флага"""
+        if self.moving_right:
+            self.rect.x += 1
+
 
     def blitme(self):
         """Рисует корабль в текущей позиции"""
