@@ -10,13 +10,15 @@ class AliensInvasion:
         """Инициализирует игру и создает игровые ресурсы"""
         pygame.init()
         self.settings = Settings()
-        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        self.screen = pygame.display.set_mode((self.settings.screen_widht, self.settings.screen_height))
         self.settings.screen_widht = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
         self.bg_color = (self.settings.bg_color)
-        pygame.display.set_caption('ANIME ALIENS')
-        
         self.ship = Ship(self)
+        # Флаги движения
+        self.moving_right = False
+        
+        pygame.display.set_caption('ANIME ALIENS')
 
     def run_game(self):
         """Запуск основного цикла игры"""
@@ -30,6 +32,18 @@ class AliensInvasion:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = True
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = False
+                
+            
+
+    def update(self):
+        if self.moving_right:
+            self.rect.x += 100
 
 
     def _update_screen(self):
