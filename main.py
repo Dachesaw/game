@@ -15,8 +15,7 @@ class AliensInvasion:
         self.settings.screen_height = self.screen.get_rect().height
         self.bg_color = (self.settings.bg_color)
         self.ship = Ship(self)
-        # Флаги движения
-        self.moving_right = False
+        
         
         pygame.display.set_caption('ANIME ALIENS')
 
@@ -24,8 +23,9 @@ class AliensInvasion:
         """Запуск основного цикла игры"""
         while True:
             self._check_ivents()
+            self.ship.update()
             self._update_screen()
-            
+
 
     def _check_ivents(self):
         # Отслеживание клавиатуры и мыши
@@ -38,13 +38,6 @@ class AliensInvasion:
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
                     self.ship.moving_right = False
-                
-            
-
-    def update(self):
-        if self.moving_right:
-            self.rect.x += 100
-
 
     def _update_screen(self):
         """Обновляет изображение на экране и отображает новый экран"""
