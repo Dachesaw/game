@@ -16,6 +16,8 @@ class Ship():
         # Флаги движения
         self.moving_right = False
         self.moving_left = False
+        self.moving_up = False
+        self.moving_down = False
 
 
     def update(self):
@@ -23,7 +25,11 @@ class Ship():
         if self.moving_right:
             self.rect.x += 1
         if self.moving_left:
-            self.rect.x += -1
+            self.rect.x -= 1
+        if self.moving_up:
+            self.rect.y -= 1
+        if self.moving_down:
+            self.rect.y += 1
 
     def blitme(self):
         """Рисует корабль в текущей позиции"""
