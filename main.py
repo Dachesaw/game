@@ -19,6 +19,7 @@ class AliensInvasion:
         
         pygame.display.set_caption('ANIME ALIENS')
 
+
     def run_game(self):
         """Запуск основного цикла игры"""
         while True:
@@ -40,8 +41,7 @@ class AliensInvasion:
                 elif event.key == pygame.K_UP:
                     self.ship.moving_up = True
                 elif event.key == pygame.K_DOWN:
-                    self.ship.moving_down = True
-                
+                    self.ship.moving_down = True    
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
                     self.ship.moving_right = False
@@ -53,7 +53,6 @@ class AliensInvasion:
                     self.ship.moving_down = False
                 
             
-
     def _update_screen(self):
         """Обновляет изображение на экране и отображает новый экран"""
         self.screen.fill(self.bg_color)
