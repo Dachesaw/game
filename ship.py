@@ -9,7 +9,7 @@ class Ship():
         self.screen_rect = ai_game.screen.get_rect()
         self.settings = ai_game.settings
         # Загружает изображение корабля и получает прямоугольник.
-        self.image = pygame.image.load('img/spaceship_prototype.bmp')
+        self.image = pygame.image.load('img/girl.bmp')
         self.rect = self.image.get_rect()
         # Корабль появляеться у нижнего края
         self.rect.midbottom = self.screen_rect.midbottom
@@ -29,9 +29,9 @@ class Ship():
             self.x += self.settings.ship_speed
         if self.moving_left and self.rect.left > 0:
             self.x -= self.settings.ship_speed
-        if self.moving_up:
+        if self.moving_up and self.rect.top > self.screen_rect.top:
             self.y -= self.settings.ship_speed
-        if self.moving_down:
+        if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
             self.y += self.settings.ship_speed
 
         self.rect.x = self.x
