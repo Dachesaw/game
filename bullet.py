@@ -1,6 +1,7 @@
 from typing import Any
+from pygame.sprite import Sprite
 import pygame
-from pygame.sprite import _Group, Sprite
+
 
 class Bullet(Sprite):
     """Класс для управления пулями вылетающими из корабля"""
@@ -9,7 +10,7 @@ class Bullet(Sprite):
         super().__init__()
         self.screen = ai_game.screen
         self.settings = ai_game.settings
-        self.color = self.settings.bullet_color
+        self.color = self.settings.bulet_color
         
         # Создание пули в позиции (0, 0) и назначение начальной позиции
         self.rect = pygame.Rect(0, 0, self.settings.bullet_width,

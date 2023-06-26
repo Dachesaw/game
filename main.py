@@ -2,6 +2,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
+from bullet import Bullet
 
 class AliensInvasion:
     """Класс для управления ресурасами и поведением игры"""
@@ -52,7 +53,9 @@ class AliensInvasion:
         elif event.key == pygame.K_DOWN:
             self.ship.moving_down = True
         elif event.key == pygame.K_q:
-            sys.exit()    
+            sys.exit()
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet()
         
 
     def _check_keyup_events(self, event):
@@ -67,10 +70,18 @@ class AliensInvasion:
             self.ship.moving_down = False
 
 
+    def _fire_bullet(self):
+        """Создание нового снаряда и включения его в группу bullets"""
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)        
+
+
     def _update_screen(self):
         """Обновляет изображение на экране и отображает новый экран"""
         self.screen.fill(self.bg_color)
         self.ship.blitme()
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
         pygame.display.flip()  # Отображение последнего отрисованного экрана    
 
 
