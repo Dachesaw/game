@@ -15,6 +15,7 @@ class AliensInvasion:
         self.settings.screen_height = self.screen.get_rect().height
         self.bg_color = (self.settings.bg_color)
         self.ship = Ship(self)
+        self.bullets = pygame.sprite.Group()
         
         
         pygame.display.set_caption('ANIME ALIENS')
@@ -26,6 +27,7 @@ class AliensInvasion:
             self._check_ivents()
             self.ship.update()
             self._update_screen()
+            self.bullets.update()
 
 
     def _check_ivents(self):
