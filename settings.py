@@ -12,6 +12,7 @@ class Settings():
         # Параметры стрельбы
         self.bullet_speed = 1
         self.bullet_width = 3
+        self.bullets_alowed = 3
         self.bullet_height = 15
         self.bulet_color = (255, 0, 0)
         

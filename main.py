@@ -28,8 +28,9 @@ class AliensInvasion:
             self._check_ivents()
             self.ship.update()
             self._update_screen()
-            self.bullets.update()
+            self._update_bullets()
 
+            
 
     def _check_ivents(self):
         # Отслеживание клавиатуры и мыши
@@ -72,9 +73,22 @@ class AliensInvasion:
 
     def _fire_bullet(self):
         """Создание нового снаряда и включения его в группу bullets"""
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)        
+        if len(self.bullets) < self.settings.bullets_alowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)        
+   
+   
+    def _update_bullets(self):
+        """Обновляет позиции снарядов и удаляет старые"""
+        # Обновление позиции снарядов
+        self.bullets.update()
+        # Удаление снарядов вышедший за край экрана
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+        # print(len(self.bullets)) 
 
+        
 
     def _update_screen(self):
         """Обновляет изображение на экране и отображает новый экран"""
