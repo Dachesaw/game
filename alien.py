@@ -1,7 +1,7 @@
 import pygame
-from pygame.sprite import _Group, Sprite
+from pygame.sprite import Sprite
 
-class Aliens(Sprite):
+class Alien(Sprite):
     """Класс, Предстовления пришельца"""
     
     def __init__(self, ai_game):
