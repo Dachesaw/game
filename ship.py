@@ -9,7 +9,7 @@ class Ship():
         self.screen_rect = ai_game.screen.get_rect()
         self.settings = ai_game.settings
         # Загружает изображение корабля и получает прямоугольник.
-        self.image = pygame.image.load('img/spaceship_prototype_low.bmp')
+        self.image = pygame.image.load('img/new_render_ship_2.bmp')
         self.rect = self.image.get_rect()
         # Корабль появляеться у нижнего края
         self.rect.midbottom = self.screen_rect.midbottom
